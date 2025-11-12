@@ -1,0 +1,49 @@
+#pantalla {
+    -fx-background-color: #F4B95D;
+}
+
+#anho {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 60px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Poppins";
+}
+
+#titulo {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 100px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Poppins";
+}
+
+#btn_entrar{
+    -fx-background-color: #1C8477;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 60px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Poppins";
+}
+
+
+
+
+
+#mesa1, #mesa2, #mesa3, #mesa4, #mesa5 {
+    -fx-background-color: #1C8477;
+    -fx-pref-width: 1000px;
+    -fx-max-width: 1000px;
+    -fx-pref-height: 150px;
+    -fx-max-height: 150px;
+    -fx-font-size: 60px;
+    -fx-padding: 0 0 0 50;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+        -fx-font-weight: bold;
+}
+
+#mesas, #disponible, #ocupada {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+}
