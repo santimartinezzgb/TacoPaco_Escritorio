@@ -1,4 +1,4 @@
-package servicios;
+package org.example.appescritoriotacopaco;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

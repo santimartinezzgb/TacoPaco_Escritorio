@@ -40,9 +40,19 @@
         </dependency>
 
         <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>17.0.1</version>
+        </dependency>
+        <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
-            <version>2.11.0</version>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-gson</artifactId>
+            <version>2.9.0</version>
         </dependency>
 
     </dependencies>
@@ -68,7 +78,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.example.appescritoriotacopaco/servicios.App
+                                org.example.appescritoriotacopaco/org.example.appescritoriotacopaco.App
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
