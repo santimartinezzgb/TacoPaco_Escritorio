@@ -20,38 +20,22 @@ public class ControladorMesas {
     @FXML private HBox mesa4;
     @FXML private HBox mesa5;
 
-    private final Map<String, HBox> mesaMap = new HashMap<>();
-
-    @FXML
-    public void initialize() {
-        // Mapear nombres a HBox
-        mesaMap.put("Mesa 1", mesa1);
-        mesaMap.put("Mesa 2", mesa2);
-        mesaMap.put("Mesa 3", mesa3);
-        mesaMap.put("Mesa 4", mesa4);
-        mesaMap.put("Mesa 5", mesa5);
-
-        // Cargar estado inicial
-        cargarMesas();
-
-        // Añadir eventos de clic
-        mesa1.setOnMouseClicked(e -> toggleMesa("Mesa 1", mesa1));
-        mesa2.setOnMouseClicked(e -> toggleMesa("Mesa 2", mesa2));
-        mesa3.setOnMouseClicked(e -> toggleMesa("Mesa 3", mesa3));
-        mesa4.setOnMouseClicked(e -> toggleMesa("Mesa 4", mesa4));
-        mesa5.setOnMouseClicked(e -> toggleMesa("Mesa 5", mesa5));
-    }
-
-    private void cargarMesas() {
-        RetrofitClient.getApi().getMesas().enqueue(new Callback<List<Mesa>>() {
+    public void cargarMesas() {
+        Call<List<Mesa>> call = RetrofitClient.getApi().getMesas();
+        call.enqueue(new Callback<List<Mesa>>() {
             @Override
             public void onResponse(Call<List<Mesa>> call, Response<List<Mesa>> response) {
-                if (response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful()) {
+                    List<Mesa> mesas = response.body();
                     Platform.runLater(() -> {
-                        for (Mesa mesa : response.body()) {
-                            HBox hbox = mesaMap.get(mesa.nombre);
-                            if (hbox != null) {
-                                actualizarEstilo(hbox, mesa.ocupada);
+                        for (Mesa mesa : mesas) {
+                            HBox mesaBox = getMesaBoxByName(mesa.nombre);
+                            if (mesaBox != null) {
+                                if (mesa.ocupada) {
+                                    mesaBox.setStyle("-fx-background-color: red;");
+                                } else {
+                                    mesaBox.setStyle("-fx-background-color: green;");
+                                }
                             }
                         }
                     });
@@ -60,36 +44,24 @@ public class ControladorMesas {
 
             @Override
             public void onFailure(Call<List<Mesa>> call, Throwable t) {
-                System.err.println("Error cargando mesas: " + t.getMessage());
+                t.printStackTrace();
             }
         });
     }
-
-    private void toggleMesa(String nombre, HBox hbox) {
-        boolean nuevoEstado = !esOcupadaActual(hbox);
-        Mesa mesa = new Mesa(nombre, nuevoEstado);
-
-        RetrofitClient.getApi().ocuparMesa(nombre, mesa).enqueue(new Callback<Mesa>() {
-            @Override
-            public void onResponse(Call<Mesa> call, Response<Mesa> response) {
-                if (response.isSuccessful()) {
-                    Platform.runLater(() -> actualizarEstilo(hbox, nuevoEstado));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Mesa> call, Throwable t) {
-                System.err.println("Error actualizando mesa: " + t.getMessage());
-            }
-        });
+    private HBox getMesaBoxByName(String nombre) {
+        switch (nombre) {
+            case "Mesa 1": return mesa1;
+            case "Mesa 2": return mesa2;
+            case "Mesa 3": return mesa3;
+            case "Mesa 4": return mesa4;
+            case "Mesa 5": return mesa5;
+            default: return null;
+        }
     }
 
-    private boolean esOcupadaActual(HBox hbox) {
-        return hbox.getStyleClass().contains("ocupada");
+    @FXML
+    public void initialize() {
+        cargarMesas();
     }
 
-    private void actualizarEstilo(HBox hbox, boolean ocupada) {
-        hbox.getStyleClass().removeAll("libre", "ocupada");
-        hbox.getStyleClass().add(ocupada ? "ocupada" : "libre");
-    }
 }

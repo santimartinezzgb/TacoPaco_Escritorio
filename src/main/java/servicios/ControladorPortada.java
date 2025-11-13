@@ -17,7 +17,7 @@ public class ControladorPortada {
     Button btn_entrar;
 
     public void verMesas(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewMesas.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/example/appescritoriotacopaco/ViewMesas.fxml")));
         Stage stage = (Stage) btn_entrar.getScene().getWindow();
         Scene scene = new Scene(root, 1920, 1080);
         stage.setScene(scene);

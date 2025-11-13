@@ -28,8 +28,7 @@
 
 
 
-
-
+/* styles.css */
 #mesa1, #mesa2, #mesa3, #mesa4, #mesa5 {
     -fx-background-color: #1C8477;
     -fx-pref-width: 1000px;
@@ -40,7 +39,8 @@
     -fx-padding: 0 0 0 50;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
-        -fx-font-weight: bold;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
 #mesas, #disponible, #ocupada {

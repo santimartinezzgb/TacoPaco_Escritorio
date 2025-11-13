@@ -32,21 +32,32 @@
     </VBox>
 
     <VBox alignment="CENTER" spacing="20">
-        <HBox fx:id="mesa1" alignment="CENTER_LEFT">
-            <Label textFill="white" text="Mesa 1"/>
+        <HBox fx:id="mesa1" alignment="CENTER_LEFT"
+              style="-fx-background-color: #1C8477; -fx-background-radius: 10; -fx-padding: 0 0 0 50;
+             -fx-pref-width: 1000; -fx-pref-height: 150; -fx-font-size: 60; -fx-font-weight: bold;">
+            <Label text="Mesa 1" textFill="white"/>
         </HBox>
-        <HBox fx:id="mesa2" alignment="CENTER_LEFT">
-            <Label textFill="white" text="Mesa 2"/>
+        <HBox fx:id="mesa2" alignment="CENTER_LEFT"
+              style="-fx-background-color: #1C8477; -fx-background-radius: 10; -fx-padding: 0 0 0 50;
+             -fx-pref-width: 1000; -fx-pref-height: 150; -fx-font-size: 60; -fx-font-weight: bold;">
+            <Label text="Mesa 2" textFill="white"/>
         </HBox>
-        <HBox fx:id="mesa3" alignment="CENTER_LEFT">
-            <Label textFill="white" text="Mesa 3"/>
+        <HBox fx:id="mesa3" alignment="CENTER_LEFT"
+              style="-fx-background-color: #1C8477; -fx-background-radius: 10; -fx-padding: 0 0 0 50;
+             -fx-pref-width: 1000; -fx-pref-height: 150; -fx-font-size: 60; -fx-font-weight: bold;">
+            <Label text="Mesa 3" textFill="white"/>
         </HBox>
-        <HBox fx:id="mesa4" alignment="CENTER_LEFT">
-            <Label textFill="white" text="Mesa 4"/>
+        <HBox fx:id="mesa4" alignment="CENTER_LEFT"
+              style="-fx-background-color: #1C8477; -fx-background-radius: 10; -fx-padding: 0 0 0 50;
+             -fx-pref-width: 1000; -fx-pref-height: 150; -fx-font-size: 60; -fx-font-weight: bold;">
+            <Label text="Mesa 4" textFill="white"/>
         </HBox>
-        <HBox fx:id="mesa5" alignment="CENTER_LEFT">
-            <Label textFill="white" text="Mesa 5"/>
+        <HBox fx:id="mesa5" alignment="CENTER_LEFT"
+              style="-fx-background-color: #1C8477; -fx-background-radius: 10; -fx-padding: 0 0 0 50;
+             -fx-pref-width: 1000; -fx-pref-height: 150; -fx-font-size: 60; -fx-font-weight: bold;">
+            <Label text="Mesa 5" textFill="white"/>
         </HBox>
+
     </VBox>
 
 
