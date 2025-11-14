@@ -106,20 +106,20 @@ public class ControladorMesas {
                         // Liberar mesa
                         Mesa mesaLibre = new Mesa(mesa.getNombre(), false);
                         RetrofitClient.getApi().ocuparMesa(mesa.getNombre(), mesaLibre)
-                                .enqueue(new Callback<Mesa>() {
-                                    @Override
-                                    public void onResponse(Call<Mesa> call, Response<Mesa> response) {
-                                        if (response.isSuccessful()) {
-                                            System.out.println("Mesa liberada: " + mesa.getNombre());
-                                            cargarMesas(); // refrescar colores
-                                        }
+                            .enqueue(new Callback<Mesa>() {
+                                @Override
+                                public void onResponse(Call<Mesa> call, Response<Mesa> response) {
+                                    if (response.isSuccessful()) {
+                                        System.out.println("Mesa liberada: " + mesa.getNombre());
+                                        cargarMesas(); // refrescar colores
                                     }
+                                }
 
-                                    @Override
-                                    public void onFailure(Call<Mesa> call, Throwable t) {
-                                        t.printStackTrace();
-                                    }
-                                });
+                                @Override
+                                public void onFailure(Call<Mesa> call, Throwable t) {
+                                    t.printStackTrace();
+                                }
+                            });
                     });
                 }
             }
