@@ -1,64 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<HBox fx:id="pantalla" alignment="CENTER" spacing="100" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="servicios.ControladorMesas" stylesheets="@styles.css">
+<?import javafx.scene.image.ImageView?>
+
+<HBox fx:id="pantalla" alignment="CENTER" spacing="100"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="servicios.ControladorMesas"
+      stylesheets="@styles.css">
+
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
+    <!-- Panel Izquierdo -->
     <VBox alignment="CENTER" spacing="20">
+
         <ImageView fitWidth="300" fitHeight="300" preserveRatio="true">
             <image>
-                <Image url="@logo.png" />
+                <Image url="@logo.png"/>
             </image>
         </ImageView>
-        <Label fx:id="mesas" text="MESAS" textFill="white"/>
+
+        <Label text="MESAS" textFill="white" style="-fx-font-size: 40px;"/>
+
         <HBox spacing="10" alignment="CENTER_LEFT">
             <Label text="      " style="-fx-background-color: #1C8477;"/>
-            <Label fx:id="disponible" text="Disponible" textFill="white"/>
+            <Label text="Disponible" textFill="white"/>
         </HBox>
+
         <HBox spacing="10" alignment="CENTER_LEFT">
             <Label text="      " style="-fx-background-color: red;"/>
-            <Label fx:id="ocupada" text="Ocupada" textFill="white"/>
+            <Label text="Ocupada" textFill="white"/>
         </HBox>
+
     </VBox>
 
+
+    <!-- Panel de las Mesas -->
     <VBox alignment="CENTER" spacing="20">
-        <HBox fx:id="mesa1" alignment="CENTER_LEFT"
-              style="-fx-background-color: #1C8477; -fx-background-radius: 10; -fx-padding: 0 0 0 50;
-             -fx-pref-width: 1000; -fx-pref-height: 150; -fx-font-size: 60; -fx-font-weight: bold;">
-            <Label text="Mesa 1" textFill="white"/>
+
+        <!-- ============ MESA 1 ============= -->
+        <HBox fx:id="mesa1" alignment="CENTER" spacing="140"
+              style="-fx-background-color: #1C8477; -fx-background-radius: 10;
+                     -fx-padding: 0 0 0 50; -fx-pref-width: 900; -fx-pref-height: 150;
+                     -fx-font-size: 60; -fx-font-weight: bold;">
+
+            <Label text="Mesa 1" textFill="white"
+                    style="-fx-font-size: 30;"/>
+
+            <Label fx:id="precio_mesa1" textFill="white" text="" visible="false"/>
+
+            <Button fx:id="btnCobrar1" text="Cobrar"
+                    style="-fx-background-color: #3074C2; -fx-text-fill: white;
+                           -fx-background-radius: 10px; -fx-border-radius: 10px;"
+                    visible="false"/>
         </HBox>
-        <HBox fx:id="mesa2" alignment="CENTER_LEFT"
-              style="-fx-background-color: #1C8477; -fx-background-radius: 10; -fx-padding: 0 0 0 50;
-             -fx-pref-width: 1000; -fx-pref-height: 150; -fx-font-size: 60; -fx-font-weight: bold;">
+
+
+        <!-- ============ MESA 2 ============= -->
+        <HBox fx:id="mesa2" alignment="CENTER" spacing="140"
+              style="-fx-background-color: #1C8477; -fx-background-radius: 10;
+                     -fx-padding: 0 0 0 50; -fx-pref-width: 900; -fx-pref-height: 150;
+                     -fx-font-size: 60; -fx-font-weight: bold;">
+
             <Label text="Mesa 2" textFill="white"/>
+
+            <Label fx:id="precio_mesa2" textFill="white" text="" visible="false"/>
+
+            <Button fx:id="btnCobrar2" text="Cobrar"
+                    style="-fx-background-color: #3074C2; -fx-text-fill: white;
+                           -fx-background-radius: 10px; -fx-border-radius: 10px;"
+                    visible="false"/>
         </HBox>
-        <HBox fx:id="mesa3" alignment="CENTER_LEFT"
-              style="-fx-background-color: #1C8477; -fx-background-radius: 10; -fx-padding: 0 0 0 50;
-             -fx-pref-width: 1000; -fx-pref-height: 150; -fx-font-size: 60; -fx-font-weight: bold;">
+
+
+        <!-- ============ MESA 3 ============= -->
+        <HBox fx:id="mesa3" alignment="CENTER" spacing="140"
+              style="-fx-background-color: #1C8477; -fx-background-radius: 10;
+                     -fx-padding: 0 0 0 50; -fx-pref-width: 900; -fx-pref-height: 150;
+                     -fx-font-size: 60; -fx-font-weight: bold;">
+
             <Label text="Mesa 3" textFill="white"/>
+
+            <Label fx:id="precio_mesa3" textFill="white" text="" visible="false"/>
+
+            <Button fx:id="btnCobrar3" text="Cobrar"
+                    style="-fx-background-color: #3074C2; -fx-text-fill: white;
+                           -fx-background-radius: 10px; -fx-border-radius: 10px;"
+                    visible="false"/>
         </HBox>
-        <HBox fx:id="mesa4" alignment="CENTER_LEFT"
-              style="-fx-background-color: #1C8477; -fx-background-radius: 10; -fx-padding: 0 0 0 50;
-             -fx-pref-width: 1000; -fx-pref-height: 150; -fx-font-size: 60; -fx-font-weight: bold;">
+
+
+        <!-- ============ MESA 4 ============= -->
+        <HBox fx:id="mesa4" alignment="CENTER" spacing="140"
+              style="-fx-background-color: #1C8477; -fx-background-radius: 10;
+                     -fx-padding: 0 0 0 50; -fx-pref-width: 900; -fx-pref-height: 150;
+                     -fx-font-size: 60; -fx-font-weight: bold;">
+
             <Label text="Mesa 4" textFill="white"/>
+
+            <Label fx:id="precio_mesa4" textFill="white" text="" visible="false"/>
+
+            <Button fx:id="btnCobrar4" text="Cobrar"
+                    style="-fx-background-color: #3074C2; -fx-text-fill: white;
+                           -fx-background-radius: 10px; -fx-border-radius: 10px;"
+                    visible="false"/>
         </HBox>
-        <HBox fx:id="mesa5" alignment="CENTER_LEFT"
-              style="-fx-background-color: #1C8477; -fx-background-radius: 10; -fx-padding: 0 0 0 50;
-             -fx-pref-width: 1000; -fx-pref-height: 150; -fx-font-size: 60; -fx-font-weight: bold;">
+
+
+        <!-- ============ MESA 5 ============= -->
+        <HBox fx:id="mesa5" alignment="CENTER" spacing="140"
+              style="-fx-background-color: #1C8477; -fx-background-radius: 10;
+                     -fx-padding: 0 0 0 50; -fx-pref-width: 900; -fx-pref-height: 150;
+                     -fx-font-size: 60; -fx-font-weight: bold;">
+
             <Label text="Mesa 5" textFill="white"/>
+
+            <Label fx:id="precio_mesa5" textFill="white" text="" visible="false"/>
+
+            <Button fx:id="btnCobrar5" text="Cobrar"
+                    style="-fx-background-color: #3074C2; -fx-text-fill: white;
+                           -fx-background-radius: 10px; -fx-border-radius: 10px;"
+                    visible="false"/>
         </HBox>
 
     </VBox>
-
 
 </HBox>

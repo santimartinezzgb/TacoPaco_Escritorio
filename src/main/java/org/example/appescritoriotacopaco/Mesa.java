@@ -1,23 +1,24 @@
 package org.example.appescritoriotacopaco;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Mesa {
-    @SerializedName("nombre")
-    public String nombre;
 
-    @SerializedName("ocupada")
-    public boolean ocupada;
+    private String nombre;
+    private boolean ocupada;
 
     public Mesa() {}
 
+    // Constructor con parámetros
     public Mesa(String nombre, boolean ocupada) {
         this.nombre = nombre;
         this.ocupada = ocupada;
     }
 
-    @Override
-    public String toString() {
-        return "Mesa{nombre='" + nombre + "', ocupada=" + ocupada + "}";
+    public String getNombre() {
+        return nombre;
     }
+
+    public boolean isOcupada() {
+        return ocupada;
+    }
+
 }
