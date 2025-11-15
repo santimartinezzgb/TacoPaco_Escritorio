@@ -88,8 +88,12 @@ public class ControladorMesas {
                                         // Añadir nombre de la mesa
                                         box.getChildren().addAll(nombreMesa);
                                         // Añadir botón para liberar mesa
-                                        Button liberarButton = new Button("Liberar mesa");
-                                        liberarButton.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ff4d4d;");
+                                        Button liberarButton = new Button("Limpiar mesa");
+                                        liberarButton.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;" +
+                                                "-fx-font-weight: bold; -fx-padding: 5 15 5 15; -fx-border-radius: 5;" +
+                                                " -fx-background-radius: 5; -fx-cursor: hand; -fx-font-size: 25;" +
+                                                "-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 5 , 5 );" +
+                                                "");
                                         liberarButton.setOnAction(e -> liberarMesa(mesa));
                                         box.getChildren().add(liberarButton);
                                     } else{

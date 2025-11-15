@@ -1,3 +1,9 @@
+.root {
+    -fx-font-family: "Kat";
+    -fx-font-size: 14px;
+}
+
+
 #pantalla {
     -fx-background-color: #F4B95D;
 }
@@ -6,32 +12,56 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 60px;
     -fx-font-weight: bold;
-    -fx-font-family: "Poppins";
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 5, 0.5 , 3 , 3 );
 }
 
 #titulo {
     -fx-text-fill: #ffffff;
     -fx-font-size: 100px;
     -fx-font-weight: bold;
-    -fx-font-family: "Poppins";
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 5 , 5 );
 }
+
 
 #btn_entrar{
     -fx-background-color: #1C8477;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
     -fx-text-fill: #ffffff;
     -fx-font-size: 60px;
     -fx-font-weight: bold;
-    -fx-font-family: "Poppins";
+    -fx-font-family: "Kat";
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 5 , 5 );
+        -fx-transition: all 0.2s ease;
+}
+
+#btn_entrar:hover {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.9) , 10, 0.5 , 6 , 6 );
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+
+
+#actualizar {
+    -fx-font-size: 30;
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 5 , 5 );
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10 20 10 20;
+    -fx-transition: all 0.2s ease;
 }
 
 #actualizar:hover {
-    -fx-background-color: white;
-    -fx-cursor: pointer;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.9) , 10, 0.5 , 6 , 6 );
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
-
-
 
 
 /* styles.css */
@@ -43,10 +73,17 @@
     -fx-max-height: 150px;
     -fx-font-size: 60px;
     -fx-padding: 0 0 0 50;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 5 , 5 );
+}
+
+#mesa1:hover, #mesa2:hover, #mesa3:hover, #mesa4:hover, #mesa5:hover {
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.9) , 10, 0.5 , 6 , 6 );
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
 
 #mesas, #disponible, #ocupada {

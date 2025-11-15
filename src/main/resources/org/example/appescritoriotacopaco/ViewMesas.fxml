@@ -16,7 +16,7 @@
     </padding>
 
     <!-- Panel Izquierdo -->
-    <VBox alignment="CENTER" spacing="20">
+    <VBox alignment="CENTER_LEFT" spacing="20">
 
         <ImageView fitWidth="300" fitHeight="300" preserveRatio="true">
             <image>
@@ -26,15 +26,17 @@
 
         <Label text="MESAS" textFill="white" style="-fx-font-size: 80px; -fx-font-weight: bold;"/>
 
-        <HBox spacing="10" alignment="CENTER_LEFT">
-            <Label text="      " style="-fx-background-color: #1C8477; -fx-background-radius: 10px;
-            -fx-border-radius: 10px; -fx-font-size: 30px;"/>
+        <HBox spacing="30" alignment="CENTER_LEFT">
+            <Label text="      " style="-fx-background-color: #1C8477; -fx-background-radius: 5;
+            -fx-border-radius: 5; -fx-font-size: 30px;
+            -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 3 , 3 );"/>
             <Label text="Disponible" textFill="white" style="-fx-font-size: 30px; -fx-font-weight: bold;"/>
         </HBox>
 
-        <HBox spacing="10" alignment="CENTER_LEFT">
-            <Label text="      " style="-fx-background-color: red; -fx-background-radius: 10px;
-            -fx-border-radius: 10px; -fx-font-size: 30px;"/>
+        <HBox spacing="30" alignment="CENTER_LEFT">
+            <Label text="      " style="-fx-background-color: #ff4d4d; -fx-background-radius: 5;
+            -fx-border-radius: 5; -fx-font-size: 30px;
+            -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 3 , 3 );"/>
             <Label text="Ocupada" textFill="white" style="-fx-font-size: 30px; -fx-font-weight: bold;"/>
         </HBox>
 
@@ -42,10 +44,9 @@
 
 
     <!-- Panel de las Mesas -->
-    <VBox alignment="CENTER" spacing="20">
+    <VBox alignment="CENTER_RIGHT" spacing="20">
 
-        <Button fx:id="actualizar" onAction="#actualizarMesas" text="Actualizar" style="-fx-font-size: 30;
-        -fx-background-color: #1C8477; -fx-text-fill: white;m"/>
+        <Button fx:id="actualizar" onAction="#actualizarMesas" text="Actualizar" />
         <!--  MESA 1  -->
         <HBox fx:id="mesa1" alignment="CENTER_LEFT"/>
 

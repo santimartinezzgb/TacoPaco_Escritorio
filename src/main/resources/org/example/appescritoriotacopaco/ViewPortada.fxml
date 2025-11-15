@@ -20,11 +20,11 @@
         </image>
     </ImageView>
 
-    <VBox alignment="CENTER">
+    <VBox alignment="CENTER" spacing="20">
         <Label fx:id="anho" text="1998"/>
         <Label fx:id="titulo" text="Taco Paco"/>
         <Button fx:id="btn_entrar" text="Entrar" prefWidth="300" maxWidth="300" textFill="white"
-                onAction="#verMesas"/>
+                onAction="#verMesas" style="-fx-cursor: hand;"/>
     </VBox>
 
 
