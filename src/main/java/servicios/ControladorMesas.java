@@ -2,7 +2,9 @@ package servicios;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -14,6 +16,7 @@ import retrofit2.Response;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static java.awt.Color.white;
 
@@ -25,11 +28,21 @@ public class ControladorMesas {
     @FXML private HBox mesa4;
     @FXML private HBox mesa5;
     @FXML public Button actualizar;
+    @FXML public Button restaurar;
+
+
 
     @FXML
-    private void actualizarMesas() {
+    private void restaurarVista() {
+        mostrarConfirmacion();
         cargarMesas();
     }
+
+    @FXML
+    private void actualizarMesas(){
+        cargarMesas();
+    }
+
 
     // Relacionar nombre de mesa con HBox del FXML
     private final Map<String, HBox> mapaMesas = new HashMap<>();
@@ -83,7 +96,7 @@ public class ControladorMesas {
 
                                 if (mesa.isOcupada()) { // Mesa ocupada
                                     //  → rojo
-                                    if(mesa.a_pagar){ // Si la mesa está a pagar
+                                    if(mesa.mesaPagada()){ // Si la mesa está a pagar
                                         box.setStyle("-fx-background-color: #ff4d4d; -fx-padding: 10; -fx-spacing: 220;");
                                         // Añadir nombre de la mesa
                                         box.getChildren().addAll(nombreMesa);
@@ -92,8 +105,7 @@ public class ControladorMesas {
                                         liberarButton.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;" +
                                                 "-fx-font-weight: bold; -fx-padding: 5 15 5 15; -fx-border-radius: 5;" +
                                                 " -fx-background-radius: 5; -fx-cursor: hand; -fx-font-size: 25;" +
-                                                "-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 5 , 5 );" +
-                                                "");
+                                                "-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 5 , 5 );");
                                         liberarButton.setOnAction(e -> liberarMesa(mesa));
                                         box.getChildren().add(liberarButton);
                                     } else{
@@ -123,7 +135,7 @@ public class ControladorMesas {
         });
     }
 
-    private void liberarMesa(Mesa mesa) {
+    public void liberarMesa(Mesa mesa) {
 
         // Liberar mesa
         Mesa mesaLibre = new Mesa(mesa.getNombre(), false);
@@ -142,6 +154,40 @@ public class ControladorMesas {
                     t.printStackTrace();
                 }
             });
+
+    }
+
+    public void mostrarConfirmacion() {
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle("Confirmación necesaria");
+        alerta.setHeaderText("¿Estás seguro de restablecer las mesas?");
+        alerta.setContentText("Confirma si deseas continuar.");
+
+        Optional<ButtonType> resultado = alerta.showAndWait();
+
+        Call<List<Mesa>> call = RetrofitClient.getApi().getMesas();
+        call.enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<List<Mesa>> call, Response<List<Mesa>> response) {
+
+                if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                    // Obtener lista de mesas
+                    List<Mesa> mesas = response.body();
+
+                    assert mesas != null;
+                    for( Mesa mesa : mesas){
+                        liberarMesa(mesa);
+                    }
+                } else {
+                    System.out.println("El usuario canceló el reset");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Mesa>> call, Throwable throwable) {
+
+            }
+        });
 
     }
 }

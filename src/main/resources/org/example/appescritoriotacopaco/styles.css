@@ -63,6 +63,25 @@
     -fx-scale-y: 1.05;
 }
 
+#restaurar {
+    -fx-font-size: 20;
+    -fx-background-color: #ff4d4d;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 5 , 5 );
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10 20 10 20;
+    -fx-transition: all 0.2s ease;
+}
+
+#restaurar:hover {
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.9) , 10, 0.5 , 6 , 6 );
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
 
 /* styles.css */
 #mesa1, #mesa2, #mesa3, #mesa4, #mesa5 {
