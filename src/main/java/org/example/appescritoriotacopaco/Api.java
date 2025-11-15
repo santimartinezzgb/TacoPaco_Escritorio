@@ -10,8 +10,6 @@ public interface Api {
     @GET("mesas")
     Call<List<Mesa>> getMesas();
 
-
-
     @PUT("mesas/{nombre}")
     Call<Mesa> ocuparMesa(@Path("nombre") String nombre, @Body Mesa mesa);
 }

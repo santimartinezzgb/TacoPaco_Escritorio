@@ -26,6 +26,12 @@
     -fx-font-family: "Poppins";
 }
 
+#actualizar:hover {
+    -fx-background-color: white;
+    -fx-cursor: pointer;
+}
+
+
 
 
 /* styles.css */

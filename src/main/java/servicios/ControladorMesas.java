@@ -45,41 +45,61 @@ public class ControladorMesas {
         cargarMesas();
     }
 
+    // Cargar mesas desde el servidor y actualizar la interfaz
     public void cargarMesas() {
+
+        // Obtener mesas desde el servidor
         Call<List<Mesa>> call = RetrofitClient.getApi().getMesas();
 
+        // LLamada a la API de forma asíncrona
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<List<Mesa>> call, Response<List<Mesa>> response) {
+
+                // Si la respuesta es correcta, actualizar la interfaz
                 if (response.isSuccessful() && response.body() != null) {
+
+                    // Obtener lista de mesas
                     List<Mesa> mesas = response.body();
-                    for (Mesa m : mesas) {
-                        System.out.println("Mesa: " + m.getNombre() + " y Ocupada: " + m.isOcupada());
-                    }
+
+                    // Actualizar interfaz en el hilo de la aplicación JavaFX
                     Platform.runLater(() -> {
                         for (Mesa mesa : mesas) {
+
+                            // Obtener el HBox correspondiente a la mesa
                             HBox box = mapaMesas.get(mesa.getNombre());
                             if (box != null) {
+
+                                // Limpiar contenido previo
                                 box.getChildren().clear();
 
+                                // Crear etiqueta con el nombre de la mesa
                                 Label nombreMesa = new Label(mesa.getNombre());
+
+                                // Estilo de la etiqueta
                                 nombreMesa.setTextFill(Color.WHITE);
                                 nombreMesa.setPrefWidth(400);
                                 nombreMesa.setStyle("-fx-padding: 0 0 0 50;");
 
-                                if (mesa.isOcupada()) {
-                                    // Ocupada → rojo + botón Liberar
-                                    box.setStyle("-fx-background-color: #ff4d4d; -fx-padding: 10; -fx-spacing: 220;");
+                                if (mesa.isOcupada()) { // Mesa ocupada
+                                    //  → rojo
+                                    if(mesa.a_pagar){ // Si la mesa está a pagar
+                                        box.setStyle("-fx-background-color: #ff4d4d; -fx-padding: 10; -fx-spacing: 220;");
+                                        // Añadir nombre de la mesa
+                                        box.getChildren().addAll(nombreMesa);
+                                        // Añadir botón para liberar mesa
+                                        Button liberarButton = new Button("Liberar mesa");
+                                        liberarButton.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ff4d4d;");
+                                        liberarButton.setOnAction(e -> liberarMesa(mesa));
+                                        box.getChildren().add(liberarButton);
+                                    } else{
+                                        box.setStyle("-fx-background-color: #ff4d4d; -fx-padding: 10;");
+                                        box.getChildren().add(nombreMesa);
+                                    }
 
-                                    Button btn_liberar = new Button("Liberar mesa");
-                                    btn_liberar.setStyle("-fx-background-color: blue; -fx-text-fill: #ffffff; " +
-                                            "-fx-background-radius: 10px; -fx-border-radius;" +
-                                            " -fx-padding: 5 15 5 15; -fx-font-size: 30px;");
-                                    btn_liberar.setOnAction(e -> liberarMesa(mesa));
 
-                                    box.getChildren().addAll(nombreMesa, btn_liberar);
-                                } else {
-                                    // Libre → verde
+                                } else { // Mesa libre
+                                    //  → verde
                                     box.setStyle("-fx-background-color: #1C8477; -fx-padding: 10;");
                                     box.getChildren().add(nombreMesa);
                                 }

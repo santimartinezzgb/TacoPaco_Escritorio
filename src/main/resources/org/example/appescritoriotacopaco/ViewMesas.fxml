@@ -44,7 +44,8 @@
     <!-- Panel de las Mesas -->
     <VBox alignment="CENTER" spacing="20">
 
-        <Button fx:id="actualizar" onAction="#actualizarMesas" text="Actualizar" style="-fx-font-size: 30;"/>
+        <Button fx:id="actualizar" onAction="#actualizarMesas" text="Actualizar" style="-fx-font-size: 30;
+        -fx-background-color: #1C8477; -fx-text-fill: white;m"/>
         <!--  MESA 1  -->
         <HBox fx:id="mesa1" alignment="CENTER_LEFT"/>
 

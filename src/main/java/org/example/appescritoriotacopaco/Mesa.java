@@ -4,6 +4,7 @@ public class Mesa {
 
     private String nombre;
     private boolean ocupada;
+    public boolean a_pagar;
 
     public Mesa() {}
 
@@ -19,6 +20,10 @@ public class Mesa {
 
     public boolean isOcupada() {
         return ocupada;
+    }
+
+    public boolean mesaPagada(){
+        return a_pagar;
     }
 
 }
