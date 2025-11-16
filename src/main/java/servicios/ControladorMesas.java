@@ -83,11 +83,18 @@ public class ControladorMesas {
                             HBox box = mapaMesas.get(mesa.getNombre());
                             if (box != null) {
 
+                                // Nombre de la mesa tal cual viene en la base de datos (Ej: "Mesa1")
+                                String nombreMesaOriginal = mesa.getNombre();
+
+                                // Formatea el nombre para poner un espacio
+                                String nombreFormateado = nombreMesaOriginal.replaceAll("(?i)^(mesa)\\s*(\\d+)$", "$1 $2")
+                                        .replaceAll("(?<=\\D)(?=\\d)", " ");
+
                                 // Limpiar contenido previo
                                 box.getChildren().clear();
 
                                 // Crear etiqueta con el nombre de la mesa
-                                Label nombreMesa = new Label(mesa.getNombre());
+                                Label nombreMesa = new Label(nombreFormateado);
 
                                 // Estilo de la etiqueta
                                 nombreMesa.setTextFill(Color.WHITE);
@@ -106,6 +113,8 @@ public class ControladorMesas {
                                                 "-fx-font-weight: bold; -fx-padding: 5 15 5 15; -fx-border-radius: 5;" +
                                                 " -fx-background-radius: 5; -fx-cursor: hand; -fx-font-size: 25;" +
                                                 "-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 8, 0.5 , 5 , 5 );");
+
+                                        // Al clicar el botón, este libera la mesa (Limpia la mesa y la deja diponible para otro servicio)
                                         liberarButton.setOnAction(e -> liberarMesa(mesa));
                                         box.getChildren().add(liberarButton);
                                     } else{
