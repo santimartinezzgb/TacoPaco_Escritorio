@@ -144,12 +144,15 @@ public class ControladorMesas {
         });
     }
 
+    // Metodo para liberar las mesas
     public void liberarMesa(Mesa mesa) {
 
-        // Liberar mesa
+        // Instancia de una mesa que recoge el nombre pasado por parámetro en el metodo, con el atributo 'ocupada' como False
         Mesa mesaLibre = new Mesa(mesa.getNombre(), false);
+
+        // Con retrofit activa el metodo de api de ocupar la mesa y se le pasa la instancia creada tambíen por parámetro
         RetrofitClient.getApi().ocuparMesa(mesa.getNombre(), mesaLibre)
-            .enqueue(new Callback<Mesa>() {
+            .enqueue(new Callback<>() {
                 @Override
                 public void onResponse(Call<Mesa> call, Response<Mesa> response) {
                     if (response.isSuccessful()) {
@@ -166,6 +169,7 @@ public class ControladorMesas {
 
     }
 
+    // Confirmación para el control de error en SIMULACIÓN
     public void mostrarConfirmacion() {
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
         alerta.setTitle("Confirmación necesaria");
